@@ -10,7 +10,9 @@ var (
 )
 
 func main() {
-	res, err := rotate([]int{1, 2, 3, 4, 5}, 1)
+	num := 1
+	sl := []int{1, 2, 3, 4, 5}
+	res, err := rotate(sl, num)
 	if err != nil {
 		fmt.Printf("func rotate error: [%v]", err)
 		return
@@ -18,6 +20,7 @@ func main() {
 	fmt.Println(res)
 }
 
+// переносит элементы в слайсе вправо на num элементов
 func rotate(arr []int, num int) ([]int, error) {
 	if num < 0 {
 		return nil, ErrWrongNum
