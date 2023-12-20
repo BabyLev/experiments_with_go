@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 func main() {
 	var a, b int
@@ -16,7 +19,12 @@ func main() {
 		fmt.Println(mult(a, b))
 	}
 	if c == "/" {
-		fmt.Println(div(a, b))
+		res, err := div(a, b)
+		if err != nil {
+			fmt.Printf("Div error: [%v]", err)
+			return
+		}
+		fmt.Println(res)
 	}
 }
 
@@ -30,6 +38,9 @@ func mult(a, b int) int {
 	return a * b
 }
 
-func div(a, b int) float64 {
-	return float64(a) / float64(b)
+func div(a, b int) (float64, error) {
+	if b == 0 {
+		return 0, errors.New("divide by zero")
+	}
+	return float64(a) / float64(b), nil
 }
