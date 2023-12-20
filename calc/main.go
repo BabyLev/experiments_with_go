@@ -15,6 +15,9 @@ func main() {
 	if c == "*" {
 		fmt.Println(mult(a, b))
 	}
+	if c == "/" {
+		fmt.Println(div(a, b))
+	}
 }
 
 // функция, складывающая два числа
@@ -25,4 +28,8 @@ func sum(a, b int) int {
 // функция, умножащая 2 числа
 func mult(a, b int) int {
 	return a * b
+}
+
+func div(a, b int) float64 {
+	return float64(a) / float64(b)
 }
